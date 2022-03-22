@@ -8,7 +8,7 @@
 *************************************************************************/
 #include <stack>
 #include <iostream>
-#include<cstdlib>
+#include <cstdlib>
 #include "calc_useful.h"
 using namespace std;
 
@@ -18,6 +18,7 @@ int main(){
 	int onenum, twonum;
 	bool continu = true;
 	// declare an STL stack called nums right here:
+	stack<int> nums;
 
 	cout << "Please enter your expression:\n";
 
@@ -31,12 +32,18 @@ int main(){
 
 			}
 			else if(isop(c)){
-				if(/* check to see if there's anyting on the stack */){
-					
+				if(!nums.empty()){
 					// pop two numbers from the stack
-					// evaluate them using the evaluate from stack_useful
-					// push result onto the stack
+					onenum = nums.top();
+					nums.pop();
+					twonum = nums.top();
+					nums.pop();
 
+					// evaluate them using the evaluate from stack_useful
+					onenum = evaluate(twonum, onenum, c);
+
+					// push result onto the stack
+					nums.push(onenum);
 				}
 				else{
 					cout << "Error:";
