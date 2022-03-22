@@ -6,7 +6,7 @@ TESTOBJ = test.o
 OBJS = $(MAINOBJ) $(NOMAIN)
 TESTOBJS = $(TESTOBJ) $(NOMAIN)
 
-a.out: $(OBJS) node.h
+a.out: $(OBJS)
 	$(CXX) $(CFLAGS) $(OBJS) -o $@
 
 $(MAINOBJ): stackmain.cc calc_useful.h
