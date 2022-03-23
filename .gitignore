@@ -5,6 +5,9 @@
 # Testing
 test
 
+# Terminal session files
+typescript
+
 # CMake files
 
 # Debug information
