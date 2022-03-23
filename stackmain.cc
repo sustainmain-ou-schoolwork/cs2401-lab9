@@ -17,22 +17,40 @@ int main(){
 	char tmp;
 	int onenum, twonum;
 	bool continu = true;
+	bool error = false;
 	// declare an STL stack called nums right here:
 	stack<int> nums;
 
 	cout << "Please enter your expression:\n";
 
-	c = cin.get(); // priming read for the sentinel loop.
 	while(continu == true){
-		while(c != '\n'){
+		do {
+			c = cin.get();
+			
 			if(isdigit(c)){
 				cin.putback(c);
 				cin >> onenum;
 				// stack operation here.
-
+				nums.push(onenum);
 			}
 			else if(isop(c)){
-				if(!nums.empty()){
+				if (nums.empty()) {
+					error = true;
+				}
+				else {
+					onenum = nums.top();
+					nums.pop();
+
+					if (nums.empty()) {
+						error = true;
+					}
+					else {
+						nums.push(onenum);
+						error = false;
+					}
+				}
+
+				if(!error){
 					// pop two numbers from the stack
 					onenum = nums.top();
 					nums.pop();
@@ -46,17 +64,30 @@ int main(){
 					nums.push(onenum);
 				}
 				else{
-					cout << "Error:";
-					cout << "...  "; // what did this error tell us about the user's expression?
+					cout << "Error: ";
+					cout << "there must be two numbers before an operand" << endl; // what did this error tell us about the user's expression?
 					return -1;
 				}
 			}
 
-			c = cin.get(); // reading at the bottom of the sentinel loop
-		} // bottom of the loop that reads a single expression from the keyboard
+			
+		} while(c != '\n');  // bottom of the loop that reads a single expression from the keyboard
 
-	// output the final result from the top of the stack
-	// but only after you check to make sure there's something on the stack
+		// output the final result from the top of the stack
+		// but only after you check to make sure there's something on the stack
+		if (!nums.empty()) {
+			onenum = nums.top();
+			nums.pop();
+
+			if (!nums.empty()) {
+				cout << "Error: ";
+				cout << "there are too many numbers remaining on the stack" << endl;
+				return -1;
+			}
+			else {
+				cout << onenum << endl;
+			}
+		}
 
 		cout << "Enter another equation?(y or n)";
 		cin >> tmp;
