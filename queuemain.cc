@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    queue<Chore> chores;
+    priority_queue<Chore> chores;
     Chore tmp;
 
     // read in 5 chores
@@ -16,7 +16,7 @@ int main() {
 
     // display 5 chores
     for (int i = 0; i < 5; i++) {
-        cout << chores.front();
+        cout << chores.top();
         chores.pop();
     }
 }
