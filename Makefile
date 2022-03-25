@@ -15,7 +15,7 @@ $(MAINOBJ): queuemain.cc calc_useful.h chore.h
 calc_useful.o: calc_useful.cc calc_useful.h
 	$(CXX) $(CFLAGS) -c calc_useful.cc -o $@
 
-chore.o: chore.h
+chore.o: chore.cc chore.h
 	$(CXX) $(CFLAGS) -c chore.cc -o $@
 
 
