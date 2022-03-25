@@ -6,7 +6,7 @@
 
 class Chore {
     public:
-        Chore(std::string d = "", int p = 0);
+        Chore(std::string d = "", int p = 0) {};
 
         bool operator < (const Chore& c) const {return priority < c.priority;}
 
