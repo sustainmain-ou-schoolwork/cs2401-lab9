@@ -7,6 +7,8 @@ test
 
 # Terminal session files
 typescript
+stackscript
+queuescript
 
 # CMake files
 
